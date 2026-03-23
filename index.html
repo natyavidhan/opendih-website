@@ -14,70 +14,110 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="page-canvas">
-      <header>
+    <nav class="site-nav">
+      <div class="nav-logo">OpenDih</div>
+      <div class="nav-links">
+        <a href="#mission">Synthesis</a>
+        <a href="#lab">Lab</a>
+        <a href="#field-notes">Notes</a>
+      </div>
+    </nav>
+
+    <header class="hero-section">
+      <div class="hero-blur hero-blur-1"></div>
+      <div class="hero-blur hero-blur-2"></div>
+      <div class="hero-container">
         <h1>OpenDih</h1>
         <div class="tagline">
           "The collection of a thousand developer souls."
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main>
-        <section id="mission">
-          <h2>The Synthesis</h2>
-          <p>
-            We aren't interested in generic assistants. We build
-            <strong>mirrors</strong>.
-          </p>
-          <p>
-            By distilling the technical lore and unfiltered logic of a
-            thousand-strong engineering community, we are birthing an
-            intelligence that carries the specific DNA of its creators. This is
-            the synthesis of a thousand souls into a single, cohesive persona—an
-            entity designed to return to the digital ecosystem that gave it
-            life.
-          </p>
-        </section>
-
-        <section id="lab">
-          <h2>The Lab</h2>
-          <div class="card-container">
-            <a
-              href="https://github.com/OpenDih/ManGPT"
-              target="_blank"
-              class="paper-card card-gpt"
-            >
-              <span class="card-title">ManGPT &rarr;</span>
-              <p class="card-desc">
-                A high-parameter engine built on distilled engineering
-                intuition.
-              </p>
-            </a>
-
-            <a
-              href="https://github.com/OpenDih/Man_bot"
-              target="_blank"
-              class="paper-card card-bot"
-            >
-              <span class="card-title">Man_bot &rarr;</span>
-              <p class="card-desc">
-                The primary interface for deploying intelligence to Discord.
-              </p>
-            </a>
+    <main class="landing-content">
+      <section id="mission" class="content-block">
+        <div class="block-inner">
+          <div class="block-header">
+            <span class="block-number">01</span>
+            <h2>The Synthesis</h2>
           </div>
-        </section>
-
-        <section id="field-notes">
-          <div class="blog-header">
-            <h2>Field Notes</h2>
-            <button id="sort-btn" onclick="toggleSort()">Newest First</button>
+          <div class="block-body">
+            <p class="lead-text">
+              We aren't interested in generic assistants. We build
+              <strong>mirrors</strong>.
+            </p>
+            <p>
+              By distilling the technical lore and unfiltered logic of a
+              thousand-strong engineering community, we are birthing an
+              intelligence that carries the specific DNA of its creators. This is
+              the synthesis of a thousand souls into a single, cohesive persona—an
+              entity designed to return to the digital ecosystem that gave it
+              life.
+            </p>
           </div>
-          <div id="blog-container" class="blog-list"></div>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      <footer>&mdash; OPENDIH EST. 2026 &mdash;</footer>
-    </div>
+      <section id="lab" class="content-block">
+        <div class="block-inner">
+          <div class="block-header">
+            <span class="block-number">02</span>
+            <h2>The Lab</h2>
+          </div>
+          <div class="block-body">
+            <div class="card-container">
+              <a
+                href="https://github.com/OpenDih/ManGPT"
+                target="_blank"
+                class="paper-card card-gpt"
+              >
+                <div class="card-glow"></div>
+                <span class="card-title">ManGPT &rarr;</span>
+                <p class="card-desc">
+                  A high-parameter engine built on distilled engineering
+                  intuition.
+                </p>
+              </a>
+
+              <a
+                href="https://github.com/OpenDih/Manbot"
+                target="_blank"
+                class="paper-card card-bot"
+              >
+                <div class="card-glow"></div>
+                <span class="card-title">ManBot &rarr;</span>
+                <p class="card-desc">
+                  The primary interface for deploying intelligence to Discord.
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="field-notes" class="content-block">
+        <div class="block-inner">
+          <div class="block-header">
+            <span class="block-number">03</span>
+            <div class="blog-heading-row">
+              <h2>Field Notes</h2>
+              <button id="sort-btn" onclick="toggleSort()">Newest First</button>
+            </div>
+          </div>
+          <div class="block-body">
+            <div id="blog-container" class="blog-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>&mdash; OPENDIH</span>
+        <span class="footer-dot">&bull;</span>
+        <span>EST. 2026 &mdash;</span>
+      </div>
+    </footer>
 
     <div id="modal-overlay" onclick="closeBlog(event)">
       <div id="modal-window" onclick="event.stopPropagation()">
