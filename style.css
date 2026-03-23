@@ -1,0 +1,285 @@
+:root {
+  --desk: #e5e0d8;
+  --paper-main: #fdfbf7;
+  --paper-card: #ffffff;
+  --ink: #2b2b2b;
+  --accent-tape: rgba(212, 163, 115, 0.15);
+  --shadow-deep: 0 30px 60px rgba(0, 0, 0, 0.12);
+  --shadow-lift: 0 15px 35px rgba(0, 0, 0, 0.1);
+  --shadow-flat: 2px 4px 0px rgba(0, 0, 0, 0.02);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--desk);
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  line-height: 1.9;
+}
+
+.page-canvas {
+  background-color: var(--paper-main);
+  max-width: 900px;
+  width: 100%;
+  padding: 100px;
+  box-shadow: var(--shadow-deep);
+  border-radius: 3px;
+  position: relative;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 120px;
+}
+
+h1 {
+  font-family: "Instrument Serif", serif;
+  font-size: 5rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -2px;
+  line-height: 0.9;
+}
+
+.tagline {
+  font-family: "Instrument Serif", serif;
+  font-size: 1.5rem;
+  margin-top: 25px;
+  font-style: italic;
+  opacity: 0.5;
+}
+
+section {
+  margin-bottom: 140px;
+}
+
+h2 {
+  font-family: "Instrument Serif", serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eeeade;
+  display: inline-block;
+  padding-right: 60px;
+}
+
+p {
+  max-width: 60ch;
+  font-size: 1.15rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.paper-card {
+  background-color: var(--paper-card);
+  padding: 45px;
+  box-shadow: var(--shadow-lift), var(--shadow-flat);
+  border: 1px solid #f0eee9;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.paper-card::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 24px;
+  background: var(--accent-tape);
+  backdrop-filter: blur(1px);
+}
+
+.card-gpt:hover {
+  transform: translateY(-12px) rotate(-2deg) scale(1.02);
+}
+.card-bot:hover {
+  transform: translateY(-12px) rotate(2deg) scale(1.02);
+}
+
+.card-title {
+  font-family: "Instrument Serif", serif;
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+#sort-btn {
+  background: var(--paper-card);
+  border: 1px solid #e0ddd7;
+  padding: 10px 25px;
+  font-family: "Instrument Serif", serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px var(--desk);
+  transition: 0.2s;
+}
+
+#sort-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--desk);
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.blog-item {
+  background: var(--paper-card);
+  padding: 40px;
+  border: 1px solid #f0eee9;
+  box-shadow: var(--shadow-flat);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.blog-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-color: #d8d3c5;
+}
+
+.blog-date {
+  font-size: 0.85rem;
+  opacity: 0.4;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.blog-title {
+  font-family: "Instrument Serif", serif;
+  font-size: 1.8rem;
+  margin: 10px 0;
+  display: block;
+}
+
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 43, 43, 0.15);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+#modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#modal-window {
+  background: var(--paper-main);
+  width: 90%;
+  max-width: 700px;
+  max-height: 85vh;
+  padding: 80px 60px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow-y: auto;
+  transform: translateY(50px) scale(0.95) rotate(-1deg);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#modal-overlay.active #modal-window {
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+
+#close-modal {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: 0.2s;
+  border: none;
+  background: none;
+}
+
+#close-modal:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.modal-body-title {
+  text-align: center;
+  font-family: "Instrument Serif", serif;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  line-height: 1.1;
+}
+
+.modal-body-content {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 2;
+}
+
+footer {
+  margin-top: 120px;
+  text-align: center;
+  font-family: "Instrument Serif", serif;
+  font-size: 1.1rem;
+  opacity: 0.4;
+  letter-spacing: 3px;
+}
+
+@media (max-width: 850px) {
+  .page-canvas {
+    padding: 60px 30px;
+  }
+  h1 {
+    font-size: 3.5rem;
+  }
+  #modal-window {
+    padding: 60px 30px;
+  }
+  .modal-body-title {
+    font-size: 2.2rem;
+  }
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
